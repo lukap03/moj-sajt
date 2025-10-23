@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Podrška | Use Custom AI</title>
+  <link rel="icon" type="image/jpeg" href="logo.jpeg">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=Tomorrow:wght@600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      transition: all 0.3s ease-in-out;
+    }
+
+    html, body {
+  background-color: white;
+  color: #212529;
+  width: 100%;
+  overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+    header {
+        position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      background-color: #ffffff;
+      color: #111827;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background-color 0.3s ease-in-out;
+      border-bottom: 1px solid #ddd;
+    }
+
+    header h1 a{
+  font-size: 1.3rem;
+  font-family: 'Tomorrow', sans-serif;
+  font-weight: 600;
+  color: #000000;
+}
+
+    nav a {
+      margin-left: 1.5rem;
+      color: #111827;
+      text-decoration: none;
+      font-weight: 500;
+      transition: transform 0.3s ease, color 0.3s ease, background-color 0.3s ease;
+      display: inline-block;
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.375rem;
+    }
+
+    nav a:hover {
+      color: #ffffff;
+      background-color: #000000;
+      transform: scale(1.05);
+    }
+
+    .intro {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      padding: 3rem 2rem;
+      max-width: 1000px;
+      margin: auto;
+      background-color: #ffffff;
+    }
+
+    .intro-text {
+      flex: 1;
+    }
+
+    .intro-text h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .intro-text p {
+      font-size: 1.1rem;
+    }
+
+    .verification-icons {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .verification-item {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .verification-item:hover {
+      transform: scale(1.05);
+    }
+
+    .verification-icon {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
+    }
+
+    .verification-icon:hover {
+      transform: rotate(10deg);
+    }
+
+    .blue-icon { background-color: #3b82f6; }
+    .yellow-icon { background-color: #facc15; }
+    .red-icon { background-color: #ef4444; }
+
+    .intro-img {
+      flex: 1;
+      max-width: 100%;
+    }
+
+    .intro-img img {
+      width: 100%;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    section.features, section.contact {
+      padding: 3rem 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .features h3, .contact h3, .about h3 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .feature-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .feature {
+      background-color: white;
+      padding: 1.5rem;
+      border-radius: 1rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .feature:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    section.about {
+      background-color: #f1f3f5;
+      padding: 3rem 2rem;
+    }
+
+    footer {
+  background-color: #111827;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  margin-top: auto;
+}
+
+    form input, form textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 0.5rem;
+      transition: border-color 0.3s ease-in-out;
+    }
+
+    form input:focus, form textarea:focus {
+      border-color: #4f46e5;
+      outline: none;
+    }
+
+    form button {
+      background-color: #4f46e5;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    form button:hover {
+      background-color: #4338ca;
+    }
+    .about-center {
+  max-width: 800px;
+  margin: 2rem auto;
+  text-align: center;
+  padding: 2rem;
+}
+
+.bottom-dots {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.blue { background-color: #3b82f6; }
+.yellow { background-color: #facc15; }
+.red { background-color: #ef4444; }
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+  }
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  nav a {
+    margin: 0.5rem 0;
+  }
+
+  .intro {
+    flex-direction: column;
+    padding: 2rem 1rem;
+    text-align: center;
+  }
+
+  .intro-text h2 {
+    font-size: 1.5rem;
+  }
+
+  .intro-text p {
+    font-size: 1rem;
+  }
+
+  .image-text-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .image-side img {
+    max-width: 100%;
+  }
+
+  .text-side h3 {
+    font-size: 1.5rem;
+  }
+
+  .text-side p {
+    font-size: 1rem;
+  }
+
+  .feature-list {
+    grid-template-columns: 1fr;
+  }
+
+  .verification-icons {
+    align-items: center;
+  }
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.mobile-nav {
+  display: flex;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .mobile-nav {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  .mobile-nav.show {
+    display: flex;
+  }
+
+  nav a {
+    margin: 0.5rem 0;
+  }
+}
+.menu-toggle {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1000;
+}
+body {
+  padding-top: 10px;
+}
+
+
+  </style>
+</head>
+<body>
+    <main style="flex: 1; padding-top: 90px;"></main>
+  <header>
+    <h1><a href="index.html" style="text-decoration: none; color: inherit;">Use Custom AI</a></h1>
+
+  <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
+
+  <nav class="mobile-nav">
+    <a href="index.html#proizvod">Proizvod</a>
+    <a href="o-nama.html">O nama</a>
+    <a href="contact.html">Kontakt</a>
+    <a href="podrska.html">Podrška</a>
+  </nav>
+  </header>
+
+  <main style="flex: 1;">
+    <section class="about-center">
+      <div class="title-with-dots">
+        <h1 style="font-size: 3rem; margin-bottom: 2rem;">Podrška</h1>
+      </div>
+      <p>Kontakt podaci za tehničku podršku</p>
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 2rem; margin-top: 2rem;">
+  <div style="display: flex; align-items: center; gap: 1rem;">
+    <img src="https://cdn-icons-png.flaticon.com/512/597/597177.png" alt="phone" style="width:20px; vertical-align:middle;">
+    <a href="tel:+381641126376" style="font-size: 1.1rem; color: inherit; text-decoration: none;">+381 64 1126 376</a>
+  </div>
+  <div style="display: flex; align-items: center; gap: 1rem;">
+    <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" alt="email" style="width:20px; vertical-align:middle;">
+    <a href="mailto:aissist.help@gmail.com" style="font-size: 1.1rem; color: inherit; text-decoration: none;">usecustomai@gmail.com</a>
+  </div>
+</div>
+<div class="bottom-dots" style="justify-content: center;">
+        <div class="dot blue"></div>
+        <div class="dot yellow"></div>
+        <div class="dot red"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 aissist. All rights reserved.</p>
+  </footer>
+
+  <script>
+  const toggleBtn = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('.mobile-nav');
+
+  toggleBtn.addEventListener('click', () => {
+    nav.classList.toggle('show');
+  });
+</script>
+
+</body>
+</html>
